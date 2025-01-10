@@ -3,6 +3,9 @@ package com.springboot.aop.dao;
 import com.springboot.aop.Account;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Repository
 public class AccountDAOImpl implements AccountDAO {
     @Override
@@ -14,5 +17,17 @@ public class AccountDAOImpl implements AccountDAO {
     public boolean doWork() {
         System.out.println(getClass().getName() + " Do Work !!");
         return false;
+    }
+
+    @Override
+    public List<Account> findAccounts() {
+
+        List<Account> accounts = new ArrayList<>();
+
+        accounts.add(new Account("Yusuf","2345"));
+        accounts.add(new Account("John","7890"));
+        accounts.add(new Account("Yafi","9123"));
+
+        return accounts;
     }
 }

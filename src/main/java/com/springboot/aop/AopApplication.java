@@ -18,8 +18,15 @@ public class AopApplication {
     @Bean
     public CommandLineRunner commandLineRunner(AccountDAO accountDAO, MembershipDAO membershipDAO) {
         return runner -> {
-            demoTheBeforeAdvice(accountDAO, membershipDAO);
+//            demoTheBeforeAdvice(accountDAO, membershipDAO);
+            demoTheAfterReturnAdvice(accountDAO);
         };
+    }
+
+    private void demoTheAfterReturnAdvice(AccountDAO accountDAO) {
+
+        accountDAO.findAccounts().forEach(System.out::println);
+
     }
 
     private void demoTheBeforeAdvice(AccountDAO accountDAO, MembershipDAO membershipDAO) {
