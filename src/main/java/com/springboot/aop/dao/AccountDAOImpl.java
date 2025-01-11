@@ -30,4 +30,12 @@ public class AccountDAOImpl implements AccountDAO {
 
         return accounts;
     }
+
+    public void afterAdviceMethod(boolean vipFlag)  {
+
+        if(vipFlag){
+            throw new RuntimeException("Simulated Exception");
+        }
+
+    }
 }

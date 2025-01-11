@@ -2,10 +2,7 @@ package com.springboot.aop.aspect;
 
 import com.springboot.aop.Account;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -14,6 +11,10 @@ import java.util.List;
 @Component
 public class MyDemoLoggingAspect {
 
+    @After("execution(* com.springboot.aop.dao.AccountDAO.afterAdviceMethod(..))")
+    public void afterFinallyAdvice(JoinPoint joinPoint) {
+        System.out.println("After Finally advice executed : " + joinPoint.getSignature().getName());
+    }
 
     @AfterReturning(
             pointcut = "execution(* com.springboot.aop.dao.AccountDAO.findAccounts(..))",

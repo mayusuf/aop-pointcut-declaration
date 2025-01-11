@@ -9,4 +9,5 @@ public interface AccountDAO {
     void addAccount(Account account, boolean vipFlag);
     boolean doWork();
     List<Account> findAccounts();
+    void afterAdviceMethod(boolean vipFlag);
 }

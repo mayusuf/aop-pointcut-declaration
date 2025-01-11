@@ -8,6 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jmx.JmxAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SpringBootApplication
 public class AopApplication {
 
@@ -19,8 +22,20 @@ public class AopApplication {
     public CommandLineRunner commandLineRunner(AccountDAO accountDAO, MembershipDAO membershipDAO) {
         return runner -> {
 //            demoTheBeforeAdvice(accountDAO, membershipDAO);
-            demoTheAfterReturnAdvice(accountDAO);
+//            demoTheAfterReturnAdvice(accountDAO);
+            demoTheAfterAdvice(accountDAO);
         };
+    }
+
+    private void demoTheAfterAdvice(AccountDAO accountDAO) {
+
+        try {
+            boolean tripWire = true;
+            accountDAO.afterAdviceMethod(tripWire);
+        }catch (Exception e){
+            System.out.println("Main : " + e.getMessage());
+        }
+
     }
 
     private void demoTheAfterReturnAdvice(AccountDAO accountDAO) {
